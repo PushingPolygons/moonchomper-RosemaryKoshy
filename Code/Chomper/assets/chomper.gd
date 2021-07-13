@@ -11,4 +11,5 @@ func _process(delta_time: float) -> void:
 
 func _on_Area2D_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
-		self.queue_free() # Destroy().
+		self.queue_free() # Destroy chomper.
+		print("Chomper destroyed")
