@@ -7,7 +7,7 @@ var chomp_power: int = 1
 
 # Called every frame. 'delta_time' is the elapsed time since the previous frame.
 func _process(delta_time: float) -> void:
-	self.position += Vector2(50, 20) * delta_time
+	self.position += Vector2(48, 27) * delta_time
 
 func _on_Area2D_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
