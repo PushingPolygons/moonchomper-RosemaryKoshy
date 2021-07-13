@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Chomper",
+"language": "GDScript",
+"path": "res://Chomper/assets/chomper.gd"
+}, {
+"base": "Node2D",
+"class": "Moon",
+"language": "GDScript",
+"path": "res://Moon/assets/moon.gd"
+} ]
+_global_script_class_icons={
+"Chomper": "",
+"Moon": ""
+}
+
 [application]
 
 config/name="Moon Chomper"
