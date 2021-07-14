@@ -2,12 +2,12 @@ extends Node2D
 class_name Moon
 
 # Member variables:
-var Health: int = 0
+var Health: int = 4
 
 # Called when the moon enters the scene tree for the first time.
 func _ready() -> void:
 	Health = 4
-	print("Health: ", Health)
+	print("Moon Health: ", Health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

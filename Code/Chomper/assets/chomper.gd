@@ -3,6 +3,7 @@ class_name Chomper
 
 # Member variables:
 var moon: Moon = null
+var health: int = 1
 var chomp_power: int = 1
 
 # Called every frame. 'delta_time' is the elapsed time since the previous frame.
