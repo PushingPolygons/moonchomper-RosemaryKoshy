@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moon_health_5.png-24595d5056f39471fa974ffc88389dbe.stex"
+path="res://.import/moon-health-2.png-610e5c7397555ad777f85e303dfce876.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://moon/assets/moon_health_5.png"
-dest_files=[ "res://.import/moon_health_5.png-24595d5056f39471fa974ffc88389dbe.stex" ]
+source_file="res://moon/assets/moon-health-2.png"
+dest_files=[ "res://.import/moon-health-2.png-610e5c7397555ad777f85e303dfce876.stex" ]
 
 [params]
 
