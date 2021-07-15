@@ -2,8 +2,9 @@ extends Node
 
 # Member variables:
 var chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
-var chomper_count: int = 6;
-var chomper_distance: float = 512.0;  # in pixels
+
+export var chomper_count: int = 6
+export var chomper_distance: float = 600.0 # px
 
 # When Level starts
 func _ready() -> void:

@@ -3,7 +3,7 @@ class_name Moon
 
 # Member variables:
 var health: int = 4
-export var speed: float = 100.0 # px/s
+export var speed: float = 512.0 # px/s
 
 # When Moon enters scene
 func _ready() -> void:

@@ -14,7 +14,7 @@ func Initialize(moon: Moon):
 func _process(delta_t: float) -> void:
 	# self.position += Vector2(48, 27) * delta_t
 	self.look_at(_moon.position)
-	self.translate(self.position.direction_to(_moon.position))
+	self.translate(speed * delta_t * self.position.direction_to(_moon.position))
 
 func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
