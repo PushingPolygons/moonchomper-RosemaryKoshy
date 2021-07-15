@@ -3,9 +3,9 @@ extends Node
 # Member variables:
 var chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
 var chomper_count: int = 6;
-var chomper_distance: float = 400.0;  # in pixels
+var chomper_distance: float = 512.0;  # in pixels
 
-# Called when the node enters the scene tree for the first time.
+# When Level starts
 func _ready() -> void:
 	var center: Vector2 = get_viewport().get_visible_rect().size / 2
 	SpawnChompers(chomper_count, center, chomper_distance)
