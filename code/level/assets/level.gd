@@ -9,10 +9,10 @@ export var chomper_distance: float = 600.0 # px
 # When Level starts
 func _ready() -> void:
 	var center: Vector2 = get_viewport().get_visible_rect().size / 2
-	SpawnChompers(chomper_count, center, chomper_distance)
+	spawn_chompers(chomper_count, center, chomper_distance)
 	print("Spawned ", chomper_count, " chompers")
 
-func SpawnChompers(count: int, center: Vector2, radius: float) -> void:
+func spawn_chompers(count: int, center: Vector2, radius: float) -> void:
 	for i in count:
 		var chomper: Chomper = chomper_ps.instance()
 		chomper.position.x = center.x + radius * cos(2 * PI * i / count)

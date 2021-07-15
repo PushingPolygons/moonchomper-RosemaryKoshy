@@ -2,12 +2,12 @@ extends Node2D
 class_name Moon
 
 # Member variables:
-var health: int = 0
+var health: int = 5
 export var speed: float = 512.0 # px/s
 
 # When Moon enters scene
 func _ready() -> void:
-	update_health(5)
+	update_health(0)
 
 # Called every frame. delta_t is the time since the previous frame
 func _process(delta_t: float) -> void:
@@ -30,4 +30,4 @@ func update_health(delta_h: int):
 	health += delta_h
 	print("Moon Health: ", health)
 	if health <= 0:
-		self.queue_free()
+		get_tree().quit()
