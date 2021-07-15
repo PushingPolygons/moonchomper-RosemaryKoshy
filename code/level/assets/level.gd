@@ -3,7 +3,7 @@ extends Node
 # Member variables:
 var chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
 
-export var chomper_count: int = 6
+export var chomper_count: int = 12
 export var chomper_distance: float = 600.0 # px
 
 # When Level starts
