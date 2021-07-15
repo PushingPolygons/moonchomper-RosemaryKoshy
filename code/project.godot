@@ -1,0 +1,46 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Chomper",
+"language": "GDScript",
+"path": "res://chomper/assets/chomper.gd"
+}, {
+"base": "Node2D",
+"class": "Moon",
+"language": "GDScript",
+"path": "res://moon/assets/moon.gd"
+} ]
+_global_script_class_icons={
+"Chomper": "",
+"Moon": ""
+}
+
+[application]
+
+config/name="Moon Chomper"
+run/main_scene="res://level/level.tscn"
+config/icon="res://moon/assets/moon_health_5.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
