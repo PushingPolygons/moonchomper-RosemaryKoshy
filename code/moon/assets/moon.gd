@@ -1,11 +1,11 @@
 extends Node2D
 class_name Moon
 
-var moon_textures = [preload("res://moon/assets/moon-health-1.png"),
-					 preload("res://moon/assets/moon-health-2.png"),
-					 preload("res://moon/assets/moon-health-3.png"),
-					 preload("res://moon/assets/moon-health-4.png"),
-					 preload("res://moon/assets/moon-health-5.png")]
+var moon_textures: Array = [preload("res://moon/assets/moon-health-1.png"),
+							preload("res://moon/assets/moon-health-2.png"),
+							preload("res://moon/assets/moon-health-3.png"),
+							preload("res://moon/assets/moon-health-4.png"),
+							preload("res://moon/assets/moon-health-5.png")]
 
 # Member variables:
 var health: int = 5
