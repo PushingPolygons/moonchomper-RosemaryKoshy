@@ -35,9 +35,11 @@ func _on_Area2D_area_entered(area: Area2D):
 
 func update_health(delta_h: int):
 	health += delta_h
-	print("Moon Health: ", health)
 	if health <= 0:
+		$Area2D/Sprite.texture = moon_textures[0]
 		print("FAILURE!")
-		get_tree().quit()
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 		# TODO: display game over menu
-	$Area2D/Sprite.texture = moon_textures[health]
+	else:
+		print("Moon Health: ", health)
+		$Area2D/Sprite.texture = moon_textures[health]

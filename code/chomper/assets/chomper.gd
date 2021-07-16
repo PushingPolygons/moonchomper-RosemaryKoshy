@@ -5,7 +5,7 @@ class_name Chomper
 var _moon: Moon = null
 var health: int = 1
 var attack: int = 1
-var speed: float = 55.072679252057455
+var speed: float = 110.14535850411491
 
 func Initialize(moon: Moon):
 	self._moon = moon
