@@ -1,6 +1,12 @@
 extends Node2D
 class_name Moon
 
+onready var moon_1: Texture = preload("res://moon/assets/moon-health-1.png")
+onready var moon_2: Texture = preload("res://moon/assets/moon-health-2.png")
+onready var moon_3: Texture = preload("res://moon/assets/moon-health-3.png")
+onready var moon_4: Texture = preload("res://moon/assets/moon-health-4.png")
+onready var moon_5: Texture = preload("res://moon/assets/moon-health-5.png")
+
 # Member variables:
 var health: int = 5
 export var speed: float = 512.0 # px/s
@@ -30,4 +36,17 @@ func update_health(delta_h: int):
 	health += delta_h
 	print("Moon Health: ", health)
 	if health <= 0:
+		print("FAILURE!")
 		get_tree().quit()
+		# TODO: display game over menu
+	match health:
+		1:
+			$Area2D/Sprite.texture = moon_1
+		2:
+			$Area2D/Sprite.texture = moon_2
+		3:
+			$Area2D/Sprite.texture = moon_3
+		4:
+			$Area2D/Sprite.texture = moon_4
+		5:
+			$Area2D/Sprite.texture = moon_5

@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Moon Chomper"
 run/main_scene="res://level/level.tscn"
-config/icon="res://moon/assets/moon_health_5.png"
+config/icon="res://moon/assets/moon-health-5.png"
 
 [display]
 
