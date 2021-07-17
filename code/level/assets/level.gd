@@ -15,6 +15,10 @@ func _ready() -> void:
 	spawn_chompers(chomper_count, center, chomper_distance)
 	print("Spawned ", chomper_count, " chompers")
 
+func _process(delta_t: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = true
+
 func spawn_chompers(count: int, center: Vector2, radius: float) -> void:
 	for i in count:
 		var chomper: Chomper = chomper_ps.instance()

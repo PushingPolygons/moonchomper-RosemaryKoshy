@@ -69,10 +69,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_top = 0.353157
-margin_right = 114.0
-margin_bottom = 14.3532
-text = "Hello!!!!!!!!!!!!!!!!!!!!"
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -57.0
+margin_right = 57.0
+margin_bottom = 14.0
+text = "¡¡¡HOLA!!!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
