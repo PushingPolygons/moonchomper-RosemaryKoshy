@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://menu/assets/menu.gd" type="Script" id=1]
+[ext_resource path="res://moon/assets/moon-health-0.png" type="Texture" id=2]
+[ext_resource path="res://moon/assets/moon-health-5.png" type="Texture" id=3]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -19,6 +21,33 @@ margin_left = -240.0
 margin_top = -270.0
 margin_right = 240.0
 margin_bottom = 270.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Resume"
+
+[node name="Button2" type="Button" parent="Panel"]
+margin_left = -720.0
+margin_top = -270.0
+margin_right = -656.0
+margin_bottom = -250.0
+text = "Restart"
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="Panel"]
+margin_left = -720.0
+margin_top = -270.0
+margin_right = -656.0
+margin_bottom = -250.0
+text = "Quit"
+icon = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

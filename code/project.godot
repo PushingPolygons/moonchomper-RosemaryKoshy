@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "Menu",
 "language": "GDScript",
-"path": "res://menu/menu.gd"
+"path": "res://menu/assets/menu.gd"
 }, {
 "base": "Node2D",
 "class": "Moon",
