@@ -41,4 +41,7 @@ func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int)
 		update_texture()
 
 func update_texture() -> void:
-	$Area2D/Sprite.texture = chomper_textures[health - 1][round(speed / defaultspeed) -1 if round(speed / defaultspeed) - 1 > 0 else 0]
+	var relative_speed: float = round(speed / defaultspeed) - 1
+	if relative_speed < 0:
+		relative_speed = 0
+	$Area2D/Sprite.texture = chomper_textures[health - 1][relative_speed]
