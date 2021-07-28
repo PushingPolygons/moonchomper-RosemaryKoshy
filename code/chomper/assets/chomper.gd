@@ -6,7 +6,6 @@ const defaultspeed: float = 100.0
 # Member variables:
 var _moon: Moon = null
 var health: int = 1
-var attack: int = 1
 var speed: float = defaultspeed
 
 var chomper_textures: Array = [[preload("res://chomper/assets/chomper.png"),
@@ -37,7 +36,7 @@ func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int)
 			self.queue_free() # Destroy chomper.
 			get_parent().destroy_chomper(1)
 			if get_parent().chomper_count < 1:
-				get_parent().game_over('SUCCESS!')
+				get_parent().next_level()
 	if event.is_action_pressed("right_click"):
 		self.speed /= 2.0
 		update_texture()

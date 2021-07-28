@@ -29,9 +29,12 @@ func _process(delta_t: float) -> void:
 
 # Moon collision
 func _on_Area2D_area_entered(area: Area2D) -> void:
-	update_health(-get_parent().get_node("Chomper").attack)
-	area.queue_free()
+	# attack
+	update_health(-1)
+	# notify
 	get_parent().destroy_chomper(1)
+	# die
+	area.queue_free()
 
 func update_health(delta_h: int) -> void:
 	health += delta_h
