@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _process(delta_t: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().paused = true
+		get_tree().paused = !get_tree().paused
 
 func spawn_chompers(count: int, center: Vector2, radius: float) -> void:
 	for i in count:

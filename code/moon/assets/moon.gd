@@ -31,7 +31,6 @@ func _process(delta_t: float) -> void:
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	area.queue_free()
 	update_health(-get_parent().get_node("Chomper").attack)
-	pass # Replace with function body.
 
 func update_health(delta_h: int) -> void:
 	health += delta_h
