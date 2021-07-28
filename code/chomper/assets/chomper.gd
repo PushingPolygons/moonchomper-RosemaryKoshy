@@ -35,7 +35,9 @@ func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int)
 		update_texture()
 		if self.health <= 0:
 			self.queue_free() # Destroy chomper.
-			print("Chomper destroyed")
+			get_parent().destroy_chomper(1)
+			if get_parent().chomper_count < 1:
+				get_parent().game_over('SUCCESS!')
 	if event.is_action_pressed("right_click"):
 		self.speed /= 2.0
 		update_texture()

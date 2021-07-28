@@ -29,16 +29,15 @@ func _process(delta_t: float) -> void:
 
 # Moon collision
 func _on_Area2D_area_entered(area: Area2D) -> void:
-	area.queue_free()
 	update_health(-get_parent().get_node("Chomper").attack)
+	area.queue_free()
+	get_parent().destroy_chomper(1)
 
 func update_health(delta_h: int) -> void:
 	health += delta_h
 	if health <= 0:
 		$Area2D/Sprite.texture = moon_textures[0]
-		print("FAILURE!")
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
-		# TODO: display game over menu
+		get_parent().game_over('FAILURE!')
 	else:
 		print("Moon Health: ", health)
 		$Area2D/Sprite.texture = moon_textures[health]
