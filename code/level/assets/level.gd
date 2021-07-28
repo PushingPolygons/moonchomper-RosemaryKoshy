@@ -17,6 +17,7 @@ export var chomper_distance: float = 1000.0 # px
 # When Level starts
 func _ready() -> void:
 	randomize()
+	print('Right click to slow, left click to attack')
 	next_level()
 
 func start_level():
