@@ -29,6 +29,7 @@ func _process(delta_t: float) -> void:
 	self.translate(speed * delta_t * self.position.direction_to(_moon.position))
 
 func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	# TODO: health packs
 	if event.is_action_pressed("left_click"):
 		self.health -= 1
 		update_texture()
