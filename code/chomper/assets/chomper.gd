@@ -18,7 +18,7 @@ var chomper_textures: Array = [[preload("res://chomper/assets/chomper.png"),
 								preload("res://chomper/assets/chomper-open-3.png"),
 								preload("res://chomper/assets/chomper-xopen-3.png")]]
 
-func Initialize(moon: Moon):
+func initialize(moon: Moon):
 	update_texture()
 	self._moon = moon
 

@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func start_level():
 	print('Start level ', difficulty, ' of ', difficulty_max)
-	$sky.texture = sky_textures[difficulty - 1]
+	$Sky.texture = sky_textures[difficulty - 1]
 	chomper_count = randi() % (difficulty * (chomper_max - chomper_min) + 1) + difficulty * chomper_min
 	var center: Vector2 = get_viewport().get_visible_rect().size / 2
 	spawn_chompers(chomper_count, center, chomper_distance)
@@ -39,7 +39,7 @@ func spawn_chompers(count: int, center: Vector2, radius: float) -> void:
 		chomper.position.y = center.y + radius * sin(2 * PI * i / count)
 		chomper.speed *= randi() % difficulty + 1
 		chomper.health *= randi() % difficulty + 1
-		chomper.Initialize($Moon)
+		chomper.initialize($Moon)
 		self.add_child(chomper)
 
 func destroy_chomper(how_many: int) -> void:

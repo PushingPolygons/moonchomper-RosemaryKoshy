@@ -12,7 +12,7 @@ script = ExtResource( 2 )
 [node name="Menu" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[node name="sky" type="Sprite" parent="."]
+[node name="Sky" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 centered = false
 
