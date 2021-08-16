@@ -19,15 +19,14 @@ export var chomper_distance: float = 1000.0 # px
 # When Level starts
 func _ready() -> void:
 	center = get_viewport().get_visible_rect().size / 2
-	spawn_menu()
+	if not len(get_tree().get_nodes_in_group('menu')):
+		spawn_menu()
 	randomize()
 	print('Right click to slow, left click to attack')
 	difficulty = 0
 	next_level()
 
 func spawn_menu():
-	for child in get_tree().get_nodes_in_group('menu'):
-		child.queue_free()
 	var menu: Menu = menu_ps.instance()
 	menu.initialize(self)
 	self.add_child(menu)
