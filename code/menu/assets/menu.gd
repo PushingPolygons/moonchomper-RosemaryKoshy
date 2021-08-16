@@ -9,7 +9,7 @@ func initialize(level_node: Node):
 
 # Called when the menu enters the scene
 func _ready():
-	$Panel.hide()
+	self.hide()
 
 func _on_Resume_button_down():
 	update()
@@ -25,6 +25,6 @@ func _on_Quit_button_down():
 func update():
 	get_tree().paused = !get_tree().paused
 	if get_tree().paused:
-		$Panel.show()
+		self.show()
 	else:
-		$Panel.hide()
+		self.hide()
