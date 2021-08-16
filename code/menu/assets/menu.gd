@@ -12,8 +12,7 @@ func _ready():
 	$Panel.hide()
 
 func _on_Resume_button_down():
-	get_tree().paused = false
-	$Panel.hide()
+	update()
 
 
 func _on_Restart_button_down():
@@ -22,3 +21,10 @@ func _on_Restart_button_down():
 
 func _on_Quit_button_down():
 	get_tree().quit()
+
+func update():
+	get_tree().paused = !get_tree().paused
+	if get_tree().paused:
+		$Panel.show()
+	else:
+		$Panel.hide()

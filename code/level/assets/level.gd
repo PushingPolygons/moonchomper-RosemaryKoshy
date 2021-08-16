@@ -42,11 +42,7 @@ func start_level():
 
 func _process(_delta_t: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().paused = !get_tree().paused
-		if get_tree().paused:
-			$Menu/Panel.show()
-		else:
-			$Menu/Panel.hide()
+		$Menu.update()
 
 func spawn_chompers(count: int, radius: float) -> void:
 	for i in count:
