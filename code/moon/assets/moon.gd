@@ -35,6 +35,8 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	get_parent().destroy_chomper(1)
 	# die
 	area.queue_free()
+	if get_parent().chomper_count < 1:
+		get_parent().next_level()
 
 func update_health(delta_h: int) -> void:
 	health += delta_h
