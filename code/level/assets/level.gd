@@ -19,6 +19,7 @@ export var chomper_distance: float = 1000.0 # px
 # When Level starts
 func _ready() -> void:
 	center = get_viewport().get_visible_rect().size / 2
+	# avoid multiple menus
 	if not len(get_tree().get_nodes_in_group('menu')):
 		spawn_menu()
 	randomize()
