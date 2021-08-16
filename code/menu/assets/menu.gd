@@ -2,10 +2,9 @@ extends Control
 
 class_name Menu
 
-# Called when menu enters the scene
+# Called when the menu enters the scene
 func _ready():
 	$Panel.hide()
-
 
 func _on_Resume_button_down():
 	get_tree().paused = false
