@@ -81,3 +81,7 @@ icon = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="button_down" from="Panel/Resume" to="." method="_on_Resume_button_down"]
+[connection signal="button_down" from="Panel/Restart" to="." method="_on_Restart_button_down"]
+[connection signal="button_down" from="Panel/Quit" to="." method="_on_Quit_button_down"]

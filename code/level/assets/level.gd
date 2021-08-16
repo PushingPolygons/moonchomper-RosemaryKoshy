@@ -18,6 +18,7 @@ export var chomper_distance: float = 1000.0 # px
 func _ready() -> void:
 	randomize()
 	print('Right click to slow, left click to attack')
+	difficulty = 0
 	next_level()
 
 func start_level():
@@ -45,6 +46,7 @@ func spawn_chompers(count: int, center: Vector2, radius: float) -> void:
 		chomper.health *= randi() % difficulty + 1
 		chomper.initialize($Moon)
 		self.add_child(chomper)
+		chomper.add_to_group("enemies")
 
 func destroy_chomper(how_many: int) -> void:
 	chomper_count -= how_many
@@ -54,6 +56,8 @@ func destroy_chomper(how_many: int) -> void:
 		print(how_many, "chompers destroyed: ", chomper_count, " remaining")
 
 func next_level() -> void:
+	for child in get_tree().get_nodes_in_group('enemies'):
+		child.queue_free()
 	difficulty += 1
 	if difficulty > difficulty_max:
 		game_over('SUCCESS!')
@@ -62,4 +66,4 @@ func next_level() -> void:
 
 func game_over(message: String) -> void:
 		print('GAME OVER: ', message)
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+		get_tree().quit()

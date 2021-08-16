@@ -8,11 +8,13 @@ var moon_textures: Array = [preload("res://moon/assets/moon-health-0.png"),
 							preload("res://moon/assets/moon-health-3.png"),
 							preload("res://moon/assets/moon-health-4.png"),
 							preload("res://moon/assets/moon-health-5.png")]
-var health: int = len(moon_textures) - 1
+var health: int = 0
 export var speed: float = 512.0 # px/s
 
 # When Moon enters scene
 func _ready() -> void:
+	self.set_position(get_viewport().get_visible_rect().size / 2)
+	health = len(moon_textures) - 1
 	update_health(0)
 
 # Called every frame
