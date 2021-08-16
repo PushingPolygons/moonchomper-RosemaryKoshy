@@ -12,7 +12,7 @@ func _ready():
 	self.hide()
 
 func _on_Resume_button_down():
-	update()
+	toggle_pause()
 
 
 func _on_Restart_button_down():
@@ -22,7 +22,7 @@ func _on_Restart_button_down():
 func _on_Quit_button_down():
 	get_tree().quit()
 
-func update():
+func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	if get_tree().paused:
 		self.show()

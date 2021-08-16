@@ -10,23 +10,30 @@ var moon_textures: Array = [preload("res://moon/assets/moon-health-0.png"),
 							preload("res://moon/assets/moon-health-5.png")]
 var health: int = 0
 export var speed: float = 512.0 # px/s
+var x_max: int = 0
+var y_max: int = 0
 
 # When Moon enters scene
 func _ready() -> void:
-	self.set_position(get_viewport().get_visible_rect().size / 2)
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
+	self.set_position(viewport_size / 2)
+	x_max = viewport_size.x
+	print('viewport x: ', x_max)
+	y_max = viewport_size.y
+	print('viewport y: ', y_max)
 	health = len(moon_textures) - 1
 	update_health(0)
 
 # Called every frame
 # delta_t is the time since the previous frame
 func _process(delta_t: float) -> void:
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up") and self.get_position().y > 0:
 		self.translate(Vector2.UP * speed * delta_t)
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down") and self.get_position().y < y_max:
 		self.translate(Vector2.DOWN * speed * delta_t)
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left") and self.get_position().x > 0:
 		self.translate(Vector2.LEFT * speed * delta_t)
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right") and self.get_position().x < x_max:
 		self.translate(Vector2.RIGHT * speed * delta_t)
 
 # Moon collision

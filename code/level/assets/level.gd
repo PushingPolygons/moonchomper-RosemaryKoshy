@@ -1,5 +1,8 @@
 extends Node
 
+# TODO: health packs, gameover & win screens, score & highscore,
+#       clock
+
 # Member variables:
 var chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
 var menu_ps: PackedScene = preload("res://menu/menu.tscn")
@@ -42,7 +45,7 @@ func start_level():
 
 func _process(_delta_t: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		$Menu.update()
+		$Menu.toggle_pause()
 
 func spawn_chompers(count: int, radius: float) -> void:
 	for i in count:
