@@ -2,11 +2,6 @@ extends Control
 
 class_name Menu
 
-var level: Node
-
-func initialize(level_node: Node):
-	self.level = level_node
-
 # Called when the menu enters the scene
 func _ready():
 	self.hide()

@@ -1,19 +1,19 @@
 extends Node
 
 # TODO: health packs, gameover & win screens, score & highscore,
-#       clock
+#       clock display, level display
+
+const difficulty_max: int = 3
+const sky_textures: Array = [preload("res://level/assets/sky-1.jpg"),
+							 preload("res://level/assets/sky-2.jpg"),
+							 preload("res://level/assets/sky-3.jpg")]
+const chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
+const menu_ps: PackedScene = preload("res://menu/menu.tscn")
 
 # Member variables:
-var chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
-var menu_ps: PackedScene = preload("res://menu/menu.tscn")
 var chomper_count: int = 0
 var difficulty: int = 0
-var difficulty_max: int = 3
 var center: Vector2 = Vector2(0, 0)
-
-var sky_textures: Array = [preload("res://level/assets/sky-1.jpg"),
-						   preload("res://level/assets/sky-2.jpg"),
-						   preload("res://level/assets/sky-3.jpg")]
 
 export var chomper_min: int = 2
 export var chomper_max: int = 5
@@ -32,7 +32,6 @@ func _ready() -> void:
 
 func spawn_menu():
 	var menu: Menu = menu_ps.instance()
-	menu.initialize(self)
 	self.add_child(menu)
 	menu.add_to_group("menu")
 

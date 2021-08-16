@@ -1,15 +1,16 @@
 extends Node2D
 class_name Moon
 
+const speed: float = 512.0 # px/s
+const moon_textures: Array = [preload("res://moon/assets/moon-health-0.png"),
+							  preload("res://moon/assets/moon-health-1.png"),
+							  preload("res://moon/assets/moon-health-2.png"),
+							  preload("res://moon/assets/moon-health-3.png"),
+							  preload("res://moon/assets/moon-health-4.png"),
+							  preload("res://moon/assets/moon-health-5.png")]
+
 # Member variables:
-var moon_textures: Array = [preload("res://moon/assets/moon-health-0.png"),
-							preload("res://moon/assets/moon-health-1.png"),
-							preload("res://moon/assets/moon-health-2.png"),
-							preload("res://moon/assets/moon-health-3.png"),
-							preload("res://moon/assets/moon-health-4.png"),
-							preload("res://moon/assets/moon-health-5.png")]
 var health: int = 0
-export var speed: float = 512.0 # px/s
 var x_max: int = 0
 var y_max: int = 0
 
