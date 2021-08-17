@@ -87,7 +87,7 @@ func next_level() -> void:
 func game_over() -> void:
 	$Menu/Clock.stopped = true
 	killall('enemies')
-	if difficulty > difficulty_max * 3 and $Menu.score > 420:
+	if difficulty > difficulty_max * 3 and $Menu.score > 900:
 		print('GAME OVER: SUCCESS')
 		$Sky.texture = success
 	else:
