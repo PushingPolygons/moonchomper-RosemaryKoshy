@@ -1,4 +1,5 @@
 extends Node
+class_name Level
 
 # TODO: health packs, gameover & win screens, score & highscore,
 #       clock display, level display

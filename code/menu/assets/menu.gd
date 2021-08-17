@@ -1,5 +1,4 @@
 extends Control
-
 class_name Menu
 
 var score: int = 0
@@ -28,6 +27,6 @@ func toggle_pause():
 	else:
 		self.hide()
 
-func update_score(delta_score):
-	score += delta_score
+func update_score(delta_s):
+	score += delta_s
 	$Score.text = str(score)
