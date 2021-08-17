@@ -2,17 +2,19 @@ extends Node2D
 class_name Moon
 
 const speed: float = 512.0 # px/s
-const moon_textures: Array = [preload("res://moon/assets/moon-health-0.png"),
-							  preload("res://moon/assets/moon-health-1.png"),
-							  preload("res://moon/assets/moon-health-2.png"),
-							  preload("res://moon/assets/moon-health-3.png"),
-							  preload("res://moon/assets/moon-health-4.png"),
-							  preload("res://moon/assets/moon-health-5.png")]
+const moon_textures: Array = [
+	preload("res://moon/assets/moon-health-0.png"),
+	preload("res://moon/assets/moon-health-1.png"),
+	preload("res://moon/assets/moon-health-2.png"),
+	preload("res://moon/assets/moon-health-3.png"),
+	preload("res://moon/assets/moon-health-4.png"),
+	preload("res://moon/assets/moon-health-5.png")
+]
 
 # Member variables:
 var health: int = 0
-var x_max: int = 0
-var y_max: int = 0
+var x_max: float = 0.0
+var y_max: float = 0.0
 
 # When Moon enters scene
 func _ready() -> void:
@@ -41,18 +43,19 @@ func _process(delta_t: float) -> void:
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	# attack
 	update_health(-1)
-	# notify
-	get_parent().destroy_chomper(1)
 	# die
 	area.queue_free()
-	if get_parent().chomper_count < 1:
+	# notify
+	get_parent().destroy_chomper(1)
+	# go to next_level if no chomper_count and moon has health
+	if get_parent().chomper_count < 1 and health > 0:
 		get_parent().next_level()
 
 func update_health(delta_h: int) -> void:
 	health += delta_h
 	if health <= 0:
 		$Area2D/Sprite.texture = moon_textures[0]
-		get_parent().game_over('FAILURE!')
+		get_parent().game_over('FAILURE')
 	else:
 		print("Moon Health: ", health)
 		$Area2D/Sprite.texture = moon_textures[health]

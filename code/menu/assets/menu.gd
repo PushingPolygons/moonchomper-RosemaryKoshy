@@ -2,6 +2,8 @@ extends Control
 
 class_name Menu
 
+var score: int = 0
+
 # Called when the menu enters the scene
 func _ready():
 	self.hide()
@@ -25,3 +27,7 @@ func toggle_pause():
 		self.show()
 	else:
 		self.hide()
+
+func update_score(delta_score):
+	score += delta_score
+	$Score.text = str(score)

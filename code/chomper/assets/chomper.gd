@@ -2,15 +2,22 @@ extends Node2D
 class_name Chomper
 
 const defaultspeed: float = 100.0
-const chomper_textures: Array = [[preload("res://chomper/assets/chomper.png"),
-								  preload("res://chomper/assets/chomper-open.png"),
-								  preload("res://chomper/assets/chomper-xopen.png")],
-								 [preload("res://chomper/assets/chomper-2.png"),
-								  preload("res://chomper/assets/chomper-open-2.png"),
-								  preload("res://chomper/assets/chomper-xopen-2.png")],
-								 [preload("res://chomper/assets/chomper-3.png"),
-								  preload("res://chomper/assets/chomper-open-3.png"),
-								  preload("res://chomper/assets/chomper-xopen-3.png")]]
+const chomper_textures: Array = [
+	[
+		preload("res://chomper/assets/chomper.png"),
+		preload("res://chomper/assets/chomper-open.png"),
+		preload("res://chomper/assets/chomper-xopen.png")
+	],
+	[
+		preload("res://chomper/assets/chomper-2.png"),
+		preload("res://chomper/assets/chomper-open-2.png"),
+		preload("res://chomper/assets/chomper-xopen-2.png")],
+	[
+		preload("res://chomper/assets/chomper-3.png"),
+		preload("res://chomper/assets/chomper-open-3.png"),
+		preload("res://chomper/assets/chomper-xopen-3.png")
+	]
+]
 
 # Member variables:
 var _moon: Moon = null
