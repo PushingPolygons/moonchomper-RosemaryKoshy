@@ -17,7 +17,7 @@ var x_max: float = 0.0
 var y_max: float = 0.0
 
 # When Moon enters scene
-func _ready() -> void:
+func _ready():
 	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
 	self.set_position(viewport_size / 2)
 	x_max = viewport_size.x
@@ -29,7 +29,7 @@ func _ready() -> void:
 
 # Called every frame
 # delta_t is the time since the previous frame
-func _process(delta_t: float) -> void:
+func _process(delta_t: float):
 	if Input.is_action_pressed("ui_up") and self.get_position().y > 0:
 		self.translate(Vector2.UP * speed * delta_t)
 	if Input.is_action_pressed("ui_down") and self.get_position().y < y_max:
@@ -40,7 +40,7 @@ func _process(delta_t: float) -> void:
 		self.translate(Vector2.RIGHT * speed * delta_t)
 
 # Moon collision
-func _on_Area2D_area_entered(area: Area2D) -> void:
+func _on_Area2D_area_entered(area: Area2D):
 	# attack
 	update_health(-1)
 	# die
@@ -51,7 +51,7 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 	if get_parent().chomper_count < 1 and health > 0:
 		get_parent().next_level()
 
-func update_health(delta_h: int) -> void:
+func update_health(delta_h: int):
 	health += delta_h
 	if health <= 0:
 		$Area2D/Sprite.texture = moon_textures[0]

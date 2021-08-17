@@ -1,11 +1,15 @@
 extends Control
 class_name Menu
 
+var level: Node = null
 var score: int = 0
 
 # Called when the menu enters the scene
 func _ready():
-	self.hide()
+	$Panel.hide()
+
+func initialize(level_node: Node):
+	self.level = level_node
 
 func _on_Resume_button_down():
 	toggle_pause()
@@ -23,10 +27,10 @@ func _on_Quit_button_down():
 func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	if get_tree().paused:
-		self.show()
+		$Panel.show()
 	else:
-		self.hide()
+		$Panel.hide()
 
 func update_score(delta_s):
 	score += delta_s
-	$Score.text = str(score)
+	$Score.text = "score: " + str(score)
