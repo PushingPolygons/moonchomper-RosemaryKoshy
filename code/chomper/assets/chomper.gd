@@ -30,7 +30,6 @@ func initialize(moon: Moon):
 
 # Called every frame. delta_t is the time since the previous frame
 func _process(delta_t: float):
-	# self.position += Vector2(48, 27) * delta_t
 	self.look_at(_moon.position)
 	self.translate(speed * delta_t * self.position.direction_to(_moon.position))
 
@@ -39,8 +38,8 @@ func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int)
 	if event.is_action_pressed("left_click"):
 		self.health -= 1
 		update_texture()
+		get_tree().get_root().get_node("Level/Menu").update_score(60)
 		if self.health <= 0:
-			get_tree().get_root().get_node("Level/Menu").update_score(1)
 			self.queue_free() # Destroy chomper.
 			get_parent().destroy_chomper(1)
 			if get_parent().chomper_count < 1:

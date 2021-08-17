@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SUCCESS.jpg-b67411d8c7f74a876f176581397879ce.stex"
+path="res://.import/failure.jpg-0ca708630c2841ad9d42e17cfb5c8598.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/assets/SUCCESS.jpg"
-dest_files=[ "res://.import/SUCCESS.jpg-b67411d8c7f74a876f176581397879ce.stex" ]
+source_file="res://level/assets/failure.jpg"
+dest_files=[ "res://.import/failure.jpg-0ca708630c2841ad9d42e17cfb5c8598.stex" ]
 
 [params]
 

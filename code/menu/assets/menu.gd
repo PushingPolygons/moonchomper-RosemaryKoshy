@@ -7,6 +7,7 @@ var score: int = 0
 # Called when the menu enters the scene
 func _ready():
 	$Panel.hide()
+	update_score(0)
 
 func initialize(level_node: Node):
 	self.level = level_node
@@ -16,9 +17,10 @@ func _on_Resume_button_down():
 
 
 func _on_Restart_button_down():
-	# reset Level and Moon
+	# reset Level, Moon, and score
 	get_tree().get_root().get_node("Level")._ready()
 	get_tree().get_root().get_node("Level/Moon")._ready()
+	score = 0
 	toggle_pause() # Resume game
 
 func _on_Quit_button_down():

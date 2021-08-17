@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://menu/assets/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/assets/resume.png" type="Texture" id=2]
 [ext_resource path="res://menu/assets/quit.png" type="Texture" id=3]
 [ext_resource path="res://menu/assets/replay.png" type="Texture" id=4]
 [ext_resource path="res://menu/assets/joystix.tres" type="DynamicFont" id=5]
+[ext_resource path="res://menu/clock.gd" type="Script" id=6]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -23,6 +24,17 @@ margin_right = 120.557
 margin_bottom = 39.0
 custom_fonts/font = ExtResource( 5 )
 text = "score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clock" type="Label" parent="."]
+margin_right = 243.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 5 )
+text = "clock
+"
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

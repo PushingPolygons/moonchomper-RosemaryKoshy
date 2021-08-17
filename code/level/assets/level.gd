@@ -12,9 +12,9 @@ const sky_textures: Array = [
 ]
 const chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
 const menu_ps: PackedScene = preload("res://menu/menu.tscn")
-const success = preload("res://level/assets/SUCCESS.jpg")
-const failure = preload("res://level/assets/FAILURE.jpg")
-const gameover = preload("res://level/assets/FAILURE.jpg")
+const success = preload("res://level/assets/success.jpg")
+const failure = preload("res://level/assets/failure.jpg")
+const gameover = preload("res://level/assets/gameover.jpg")
 
 # Member variables:
 var chomper_count: int = 0
@@ -83,6 +83,7 @@ func next_level() -> void:
 		start_level()
 
 func game_over(message: String) -> void:
+		$Menu/Clock.stopped = true
 		killall('enemies')
 		print('GAME OVER: ', message)
 		if message == "SUCCESS":
