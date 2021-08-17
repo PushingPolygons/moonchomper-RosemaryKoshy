@@ -18,8 +18,8 @@ func _on_Resume_button_down():
 
 func _on_Restart_button_down():
 	# reset Level, Moon, and score
-	get_tree().get_root().get_node("Level")._ready()
-	get_tree().get_root().get_node("Level/Moon")._ready()
+	get_node("/root/Level")._ready()
+	get_node("/root/Level/Moon")._ready()
 	score = 0
 	toggle_pause() # Resume game
 
