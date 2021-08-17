@@ -1,7 +1,7 @@
 extends Node2D
 class_name Chomper
 
-const defaultspeed: float = 100.0
+const defaultspeed: float = 108.0
 const chomper_textures: Array = [
 	[
 		preload("res://chomper/assets/chomper.png"),

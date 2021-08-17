@@ -18,12 +18,12 @@ const gameover = preload("res://level/assets/gameover.jpg")
 
 # Member variables:
 var chomper_count: int = 0
-var difficulty: int = 0
+var difficulty: int = 0  #exceeds difficulty_max for player to win
 var center: Vector2 = Vector2(0, 0)
 
 export var chomper_min: int = 2
 export var chomper_max: int = 5
-export var chomper_distance: float = 1000.0 # px
+export var chomper_distance: float = 256.0 # px
 
 # When Level starts
 func _ready() -> void:
@@ -43,7 +43,8 @@ func spawn_menu():
 
 func start_level():
 	print('Start level ', difficulty, ' of ', difficulty_max)
-	$Sky.texture = sky_textures[difficulty - 1]
+	$Menu/Level.text = "Level " + str(difficulty)
+	$Sky.texture = sky_textures[(difficulty - 1) % difficulty_max]
 	chomper_count = randi() % (difficulty * (chomper_max - chomper_min) + 1) + difficulty * chomper_min
 	spawn_enemies(chomper_count, chomper_distance)
 	print("Spawned ", chomper_count, " chompers")
@@ -55,10 +56,14 @@ func _process(_delta_t: float) -> void:
 func spawn_enemies(count: int, radius: float) -> void:
 	for i in count:
 		var chomper: Chomper = chomper_ps.instance()
-		chomper.position.x = center.x + radius * cos(2 * PI * i / count)
-		chomper.position.y = center.y + radius * sin(2 * PI * i / count)
-		chomper.speed *= randi() % difficulty + 1
-		chomper.health *= randi() % difficulty + 1
+		chomper.speed *= randi() % int(min(difficulty, difficulty_max)) + 1
+		chomper.health *= randi() % int(min(difficulty, difficulty_max)) + 1
+		if i % 2:
+			chomper.position.x = center.x + radius * sqrt(count) * chomper.speed * chomper.health * cos(2 * PI * i / count) / 108.0
+			chomper.position.y = center.y + radius * sqrt(count) * (chomper.speed + chomper.health) * sin(2 * PI * i / count) / 108.0
+		else:
+			chomper.position.x = center.x + radius * sqrt(count) * (chomper.speed + chomper.health) * cos(2 * PI * i / count) / 108.0
+			chomper.position.y = center.y + radius * sqrt(count) * chomper.speed * chomper.health * sin(2 * PI * i / count) / 108.0
 		chomper.initialize($Moon)
 		self.add_child(chomper)
 		chomper.add_to_group("enemies")
@@ -77,18 +82,14 @@ func killall(what: String) -> void:
 func next_level() -> void:
 	killall('enemies')
 	difficulty += 1
-	if difficulty > difficulty_max:
-		game_over('SUCCESS')
-	else:
-		start_level()
+	start_level()
 
-func game_over(message: String) -> void:
-		$Menu/Clock.stopped = true
-		killall('enemies')
-		print('GAME OVER: ', message)
-		if message == "SUCCESS":
-			$Sky.texture = success
-		elif message == "FAILURE":
-			$Sky.texture = failure
-		else:
-			$Sky.texture = gameover
+func game_over() -> void:
+	$Menu/Clock.stopped = true
+	killall('enemies')
+	if difficulty > difficulty_max:
+		print('GAME OVER: SUCCESS')
+		$Sky.texture = success
+	else:
+		print('GAME OVER: FAILURE')
+		$Sky.texture = failure

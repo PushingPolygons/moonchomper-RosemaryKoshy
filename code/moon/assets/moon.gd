@@ -55,7 +55,7 @@ func update_health(delta_h: int):
 	health += delta_h
 	if health <= 0:
 		$Area2D/Sprite.texture = moon_textures[0]
-		get_parent().game_over('FAILURE')
+		get_parent().game_over()
 	else:
 		print("Moon Health: ", health)
 		$Area2D/Sprite.texture = moon_textures[health]
