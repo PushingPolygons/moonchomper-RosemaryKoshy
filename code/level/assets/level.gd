@@ -9,6 +9,7 @@ const sky_textures: Array = [preload("res://level/assets/sky-1.jpg"),
 							 preload("res://level/assets/sky-3.jpg")]
 const chomper_ps: PackedScene = preload("res://chomper/chomper.tscn")
 const menu_ps: PackedScene = preload("res://menu/menu.tscn")
+const gameover = preload("res://level/assets/game_over.jpg")
 
 # Member variables:
 var chomper_count: int = 0
@@ -39,14 +40,14 @@ func start_level():
 	print('Start level ', difficulty, ' of ', difficulty_max)
 	$Sky.texture = sky_textures[difficulty - 1]
 	chomper_count = randi() % (difficulty * (chomper_max - chomper_min) + 1) + difficulty * chomper_min
-	spawn_chompers(chomper_count, chomper_distance)
+	spawn_enemies(chomper_count, chomper_distance)
 	print("Spawned ", chomper_count, " chompers")
 
 func _process(_delta_t: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Menu.toggle_pause()
 
-func spawn_chompers(count: int, radius: float) -> void:
+func spawn_enemies(count: int, radius: float) -> void:
 	for i in count:
 		var chomper: Chomper = chomper_ps.instance()
 		chomper.position.x = center.x + radius * cos(2 * PI * i / count)
@@ -64,9 +65,12 @@ func destroy_chomper(how_many: int) -> void:
 	else:
 		print(how_many, "chompers destroyed: ", chomper_count, " remaining")
 
-func next_level() -> void:
-	for child in get_tree().get_nodes_in_group('enemies'):
+func killall(what: String) -> void:
+	for child in get_tree().get_nodes_in_group(what):
 		child.queue_free()
+
+func next_level() -> void:
+	killall('enemies')
 	difficulty += 1
 	if difficulty > difficulty_max:
 		game_over('SUCCESS!')
@@ -74,5 +78,6 @@ func next_level() -> void:
 		start_level()
 
 func game_over(message: String) -> void:
+		killall('enemies')
 		print('GAME OVER: ', message)
-		get_tree().quit()
+		$Sky.texture = gameover
