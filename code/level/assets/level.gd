@@ -5,6 +5,7 @@ class_name Level
 #       clock display, level display
 
 const difficulty_max: int = 3
+const win_level: int = 11
 const sky_textures: Array = [
 	preload("res://level/assets/sky-1.jpg"),
 	preload("res://level/assets/sky-2.jpg"),
@@ -21,8 +22,8 @@ var chomper_count: int = 0
 var difficulty: int = 0  #exceeds difficulty_max for player to win
 var center: Vector2 = Vector2(0, 0)
 
-export var chomper_min: int = 2
-export var chomper_max: int = 5
+export var chomper_min: int = 1
+export var chomper_max: int = 4
 export var chomper_distance: float = 256.0 # px
 
 # When Level starts
@@ -42,8 +43,8 @@ func spawn_menu():
 	menu.add_to_group("menu")
 
 func start_level():
-	print('Start level ', difficulty, ' of ', difficulty_max)
-	$Menu/Level.text = "Level " + str(difficulty)
+	print('Start level ', difficulty)
+	$Menu/Level.text = "Level " + str(difficulty - win_level)
 	$Sky.texture = sky_textures[(difficulty - 1) % difficulty_max]
 	chomper_count = randi() % (difficulty * (chomper_max - chomper_min) + 1) + difficulty * chomper_min
 	spawn_enemies(chomper_count, chomper_distance)
@@ -56,8 +57,8 @@ func _process(_delta_t: float) -> void:
 func spawn_enemies(count: int, radius: float) -> void:
 	for i in count:
 		var chomper: Chomper = chomper_ps.instance()
-		chomper.speed *= randi() % int(min(difficulty, difficulty_max)) + 1
-		chomper.health *= randi() % int(min(difficulty, difficulty_max)) + 1
+		chomper.speed *= randi() % int(min(ceil(difficulty / 2.0), difficulty_max)) + 1
+		chomper.health *= randi() % int(min(ceil(difficulty / 2.0), difficulty_max)) + 1
 		if i % 2:
 			chomper.position.x = center.x + radius * sqrt(count) * chomper.speed * chomper.health * cos(2 * PI * i / count) / 108.0
 			chomper.position.y = center.y + radius * sqrt(count) * (chomper.speed + chomper.health) * sin(2 * PI * i / count) / 108.0
@@ -87,7 +88,7 @@ func next_level() -> void:
 func game_over() -> void:
 	$Menu/Clock.stopped = true
 	killall('enemies')
-	if difficulty > difficulty_max * 3 and $Menu.score > 900:
+	if difficulty >= win_level and $Menu.score >= 0:
 		print('GAME OVER: SUCCESS')
 		$Sky.texture = success
 	else:
