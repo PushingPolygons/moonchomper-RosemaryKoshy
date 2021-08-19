@@ -2,7 +2,7 @@ extends Control
 class_name Menu
 
 var level: Node = null
-var min_score: int = -1000
+const min_score: int = -1000
 var score: int = min_score
 
 # Called when the menu enters the scene
@@ -18,8 +18,8 @@ func _on_Resume_button_down():
 
 func _on_Restart_button_down():
 	# reset Level, Moon, and score
-	get_node("/root/Level")._ready()
-	get_node("/root/Level/Moon")._ready()
+	get_node('/root/Level')._ready()
+	get_node('/root/Level/Moon')._ready()
 	score = min_score
 	toggle_pause() # Resume game
 
@@ -37,4 +37,4 @@ func toggle_pause():
 
 func update_score(delta_s):
 	score += delta_s
-	$Score.text = "score: " + str(score)
+	$Score.text = 'score: ' + str(score)
